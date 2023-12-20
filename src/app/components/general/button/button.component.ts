@@ -1,14 +1,12 @@
-// button.component.ts
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-button',
-  template: `
-    <button (click)="onClick.emit()">{{ label }}</button>
-  `,
-  styles: []
+  standalone: true,
+  imports: [],
+  templateUrl: './button.component.html',
+  styleUrl: './button.component.scss'
 })
 export class ButtonComponent {
-  @Input() label: string = 'Button';
-  @Output() onClick = new EventEmitter<Event>();
+
 }

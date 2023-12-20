@@ -1,4 +1,3 @@
-// button.stories.ts
 import type { Meta, StoryObj } from '@storybook/angular';
 import { ButtonComponent } from './button.component';
 
@@ -12,13 +11,7 @@ type Story = StoryObj<ButtonComponent>;
 
 export const Default: Story = {
   args: {
-    label: 'Default Button',
-  },
-};
-
-export const WithEmoji: Story = {
-  args: {
-    label: '😀 😎 👍 💯',
+    //argumentos padrão do componente
   },
 };
 
