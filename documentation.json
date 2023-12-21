@@ -2,6 +2,36 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "StorageMock",
+            "id": "interface-StorageMock-2be72a8df30b9a5c1807ef67b5eb4a3a90eeacc8fee8f64a874a790168ec385ccba64a1a3420cade842ef914031ebed09da6ac7824f8b08ba1c096194d1f8852",
+            "file": "src/jest-config/globalMocks.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "interface StorageMock {\r\n    [key: string]: string;\r\n  }\r\n  \r\n  const mock = () => {\r\n    let storage: StorageMock = {};\r\n  \r\n    return {\r\n      getItem: (key: string) => key in storage ? storage[key] : null,\r\n      setItem: (key: string, value: string) => (storage[key] = value || ''),\r\n      removeItem: (key: string) => delete storage[key],\r\n      clear: () => (storage = {}),\r\n    };\r\n  };\r\n  \r\n  Object.defineProperty(window, 'localStorage', { value: mock() });\r\n  Object.defineProperty(window, 'sessionStorage', { value: mock() });\r\n  Object.defineProperty(window, 'getComputedStyle', {\r\n    value: () => ['-webkit-appearance'],\r\n  });\r\n  ",
+            "properties": [],
+            "indexSignatures": [
+                {
+                    "id": "index-declaration-2be72a8df30b9a5c1807ef67b5eb4a3a90eeacc8fee8f64a874a790168ec385ccba64a1a3420cade842ef914031ebed09da6ac7824f8b08ba1c096194d1f8852",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "string",
+                    "line": 1,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "kind": 181,
+            "methods": [],
+            "extends": []
+        },
+        {
             "name": "User",
             "id": "interface-User-d4821beac0e4a852e513391b7470981c4353fdd95a18628bb68136c8695b489ee15b926e2e5031bc26cf30e1508e0a362c3ee13a06734702b4d15af140e485d5",
             "file": "src/stories/user.ts",
@@ -481,7 +511,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    //argumentos padrão do componente\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    //argumentos padrão do componente\r\n  },\r\n}"
             },
             {
                 "name": "Large",
@@ -571,7 +601,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ButtonComponent>",
-                "defaultValue": "{\n  title: 'Button',\n  component: ButtonComponent,\n}"
+                "defaultValue": "{\r\n  title: 'Button',\r\n  component: ButtonComponent,\r\n}"
+            },
+            {
+                "name": "mock",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/jest-config/globalMocks.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "() => {\r\n    let storage: StorageMock = {};\r\n  \r\n    return {\r\n      getItem: (key: string) => key in storage ? storage[key] : null,\r\n      setItem: (key: string, value: string) => (storage[key] = value || ''),\r\n      removeItem: (key: string) => delete storage[key],\r\n      clear: () => (storage = {}),\r\n    };\r\n  }"
             },
             {
                 "name": "preview",
@@ -728,7 +768,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    //argumentos padrão do componente\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    //argumentos padrão do componente\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -738,7 +778,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ButtonComponent>",
-                    "defaultValue": "{\n  title: 'Button',\n  component: ButtonComponent,\n}"
+                    "defaultValue": "{\r\n  title: 'Button',\r\n  component: ButtonComponent,\r\n}"
                 }
             ],
             "src/stories/button.stories.ts": [
@@ -855,6 +895,18 @@
                     "deprecationMessage": "",
                     "type": "Meta<PageComponent>",
                     "defaultValue": "{\n  title: 'Example/Page',\n  component: PageComponent,\n  parameters: {\n    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout\n    layout: 'fullscreen',\n  },\n}"
+                }
+            ],
+            "src/jest-config/globalMocks.ts": [
+                {
+                    "name": "mock",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/jest-config/globalMocks.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "() => {\r\n    let storage: StorageMock = {};\r\n  \r\n    return {\r\n      getItem: (key: string) => key in storage ? storage[key] : null,\r\n      setItem: (key: string, value: string) => (storage[key] = value || ''),\r\n      removeItem: (key: string) => delete storage[key],\r\n      clear: () => (storage = {}),\r\n    };\r\n  }"
                 }
             ],
             ".storybook/preview.ts": [
@@ -1006,6 +1058,25 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/jest-config/globalMocks.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "StorageMock",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/jest-config/globalMocks.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "mock",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

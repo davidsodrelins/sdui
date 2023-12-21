@@ -80,3 +80,8 @@ sh create-component.sh components/feedback/Watermark
 sh create-component.sh components/other/Affix
 sh create-component.sh components/other/App
 sh create-component.sh components/other/ConfigProvi
+
+
+#config
+mkdir -p src/jest-config
+
